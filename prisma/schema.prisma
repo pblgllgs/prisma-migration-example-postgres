@@ -16,7 +16,6 @@ model Users {
   email    String  @unique
   username String  @unique
   password String
-  bio      String
   biography String
   posts    Posts[]
 
@@ -24,7 +23,7 @@ model Users {
 }
 
 model Posts {
-  id      Int @id @default(autoincrement()) 
+  id      Int    @id @default(autoincrement())
   postId  String
   content String
   userId  Int // (used in the `@relation` attribute above)
@@ -35,7 +34,7 @@ model Posts {
 }
 
 model Followers {
-  id         String @id @default(uuid()) @db.Uuid
+  id         Int    @id @default(autoincrement())
   userId     String
   followerId String
 
@@ -43,7 +42,7 @@ model Followers {
 }
 
 model Likes {
-  id     String @id @default(uuid()) @db.Uuid
+  id     Int    @id @default(autoincrement())
   userId String
   postId String
 
@@ -51,7 +50,7 @@ model Likes {
 }
 
 model Comments {
-  id      String @id @default(uuid()) @db.Uuid
+  id      Int    @id @default(autoincrement())
   userId  String
   postId  String
   content String
